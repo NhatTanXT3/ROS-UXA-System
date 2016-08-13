@@ -188,7 +188,9 @@ int Read_Serial_Char(int Serial, unsigned char *Recei_chr)
 
 void rev_func(const uxa_serial_msgs::transmit::ConstPtr &msg)
 {
+    unsigned char msgs_buf;
     ROS_INFO("receive msg : 0x%x",msg->tx_data);
-    *msg_buf = msg->tx_data;
-    Send_Serial_Char(Serial, msg_buf);
+    // *msg_buf = msg->tx_data;
+    msgs_buf=(unsigned char) msg->tx_data;
+    Send_Serial_Char(Serial, &msgs_buf);
 }

@@ -112,7 +112,7 @@ void UIC_send_pc_control_remote(unsigned char remote)
     buf[cnt++] = (buf[1]^buf[2]^buf[3]^buf[4]) & 0x7F;
 */
     Send_pc_buf[4] = remote;
-    Send_pc_buf[5] = (0xFF^0xE0^0xE1^remote) & 0x7E;
+    Send_pc_buf[5] = (0xE0^0xE1^0x00^remote) & 0x7F;
 
     Message_sender(Send_pc_buf, 6);
 }
